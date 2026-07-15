@@ -1,2 +1,11 @@
 /.quarto/
 **/*.quarto_ipynb
+
+*.dta
+
+data
+
+sa-census-2011-person-prov-1to5-v2-20150825-stata
+sa-census-2011-person-prov-6to9-v2-20150825-stata
+SA Census 2001 Person_stata_pr1-5
+SA Census 2001 Person_stata_pr6-9

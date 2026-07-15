@@ -1,17 +1,17 @@
 ---
-title: "Learning Latent Personas of Film Characters"
+title: "Has Anything Actually Changed? Post-Apartheid Labor Outcomes in South Africa"
 subtitle: "DSAN 5650: Causal Inference for Computational Social Science"
 authors:
-  - name: David Bamman
+  - name: Erin Brzusek
     affiliation: Georgetown University<br>Data Science and Analytics
-    email: dbamman@cs.cmu.edu
+    email: eb1496@georgetown.edu
 date: 2026-08-10
 bibliography: PGM_Project.bib
 csl: chicago-17-no-url.csl
 title-block-banner: "#041e42"
 title-block-banner-color: "#e3e3e5"
 abstract: |
-  We present two latent variable models for learning character types, or *personas*, in film, in which a persona is defined as a set of mixtures over latent lexical classes. These lexical classes capture the stereotypical actions of which a character is the agent and patient, as well as attributes by which they are described. As the first attempt to solve this problem explicitly, we also present a new dataset for the text-driven analysis of film, along with a benchmark testbed to help drive future work in this area.
+  This study examines the effects of legalized racial discrimination in post-apartheid South Africa. Recreating the methodological framework of previous research on the effects of racial classification, we utilize data from the 2011 South African Census to evaluate labor outcomes. Specifically, we analyze income disparities among men and women across "White" and "Coloured" racial categories. Utilizing Ordinary Least Squares (OLS) regression models, we estimate the modern day returns to labor and assess the extent to which historical socioeconomic divides persist. By updating this empirical analysis with more recent census data, this project provides critical insights into the current state of economic inequality in South Africa.
 ---
 
 ## Introduction

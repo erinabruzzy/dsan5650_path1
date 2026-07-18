@@ -1,8 +1,7 @@
 /.quarto/
 **/*.quarto_ipynb
 
-*.dta
-
+docs
 data
 
 sa-census-2011-person-prov-1to5-v2-20150825-stata

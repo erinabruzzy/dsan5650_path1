@@ -92,6 +92,8 @@ background: #041e42;
 <meta name="citation_reference" content="citation_title=Government plans to publish race quotas for employment by end March 20;,citation_abstract=Resisting state failure and harmful economic policy;,citation_author=Sakeliga;,citation_publication_date=2025-02;,citation_cover_date=2025-02;,citation_year=2025;,citation_fulltext_html_url=https://www.sakeliga.org.za/insight/government-plans-to-publish-race-quotas-for-employment-by-end-march-2025;,citation_journal_title=Sakeliga;">
 <meta name="citation_reference" content="citation_title=Patterns of intergroup attitudes in South Africa after 1994;,citation_abstract=In the heterogeneous South African society, race has become not only the major organizing principle, but also the primary unit of social analysis. The concept “intergroup relations” has consequently predominantly been associated with racial relations and “intergroup attitudes” with “interracial attitudes”. Interest in South African race relations has furthermore been enhanced by the tumultuous struggle against apartheid. A substantive body of research acquired during apartheid indeed points to interracial tension. The advent of a new political dispensation in 1994 has been accompanied with expectations that increased intergroup contact, in particular, would result in improved interracial relations. The current study investigates intergroup attitudes after 1994. Three countrywide surveys were conducted in 1998, 2001 and 2009 using representative samples of all major racial groups. The results indicate that overall attitudes were more positive among more affluent and urbanized communities. However, there are indications of prevailing negative relations, in particular between Blacks and Afrikaans-speaking Whites. While the attitudes of Afrikaans-speaking Whites seem to have become more positive, that has not been the case to the same extent for Blacks. Blacks also appear to be less positive towards English-speaking Whites than during apartheid. Overall, the results point to more positive intergroup attitudes in some instances, but also to potential emerging points of tension.;,citation_author=Elirea Bornman;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0147176711000745;,citation_issue=6;,citation_doi=https://doi.org/10.1016/j.ijintrel.2011.06.006;,citation_issn=0147-1767;,citation_volume=35;,citation_journal_title=International Journal of Intercultural Relations;">
 <meta name="citation_reference" content="citation_title=Understanding the effects of racial classification in Apartheid South Africa;,citation_abstract=The apartheid era began in 1948 in South Africa, and was implemented by passing several racially discriminatory laws. Most of the key legislative changes were introduced between 1949 and 1953. The cornerstone of this racially stratified legal system was the Population Registration Act of 1950, which required that all South Africans needed to be registered and assigned to an official racial category. We study the effect of racial classification in the context of these legislative reforms, by estimating the causal effect of being classified as White, relative to being classified as Coloured, on labour market outcomes. For identification we exploit a policy change that privileged ancestry over appearance in the process of racial classification for those born after 1951. Using census data from 1980, 1991, and 1996, we find a discontinuity in racial shares for cohorts born after 1951. Our preferred estimates indicate that being classified as White resulted in a more than fourfold increase in income for men. This corresponds to over 90% of the difference in mean incomes between men in the two population groups. Our findings for women are inconclusive.;,citation_author=Miquel Pellicer;,citation_author=Vimal Ranchhod;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0304387822001407;,citation_doi=https://doi.org/10.1016/j.jdeveco.2022.102998;,citation_issn=0304-3878;,citation_volume=160;,citation_journal_title=Journal of Development Economics;">
+<meta name="citation_reference" content="citation_title=South African Census 2011, 10% Sample;,citation_author=Statistics South Africa;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://doi.org/10.25828/VJY1-TZ66;,citation_doi=10.25828/VJY1-TZ66;,citation_publisher=DataFirst;">
+<meta name="citation_reference" content="citation_title=South African Census, 2001;,citation_author=Statistics South Africa;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_fulltext_html_url=https://doi.org/10.25828/bp70-m263;,citation_doi=10.25828/bp70-m263;,citation_publisher=DataFirst; Statistics South Africa;">
 </head>
 
 <body class="quarto-light">
@@ -158,7 +160,8 @@ background: #041e42;
   <li><a href="#exploratory-analysis" id="toc-exploratory-analysis" class="nav-link" data-scroll-target="#exploratory-analysis"><span class="header-section-number">3</span> Exploratory Analysis</a></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models"><span class="header-section-number">4</span> Models</a>
   <ul class="collapse">
-  <li><a href="#ordinary-least-squares" id="toc-ordinary-least-squares" class="nav-link" data-scroll-target="#ordinary-least-squares"><span class="header-section-number">4.1</span> Ordinary Least Squares</a></li>
+  <li><a href="#ordinary-least-squares-on-2011-alone" id="toc-ordinary-least-squares-on-2011-alone" class="nav-link" data-scroll-target="#ordinary-least-squares-on-2011-alone"><span class="header-section-number">4.1</span> Ordinary Least Squares on 2011 Alone</a></li>
+  <li><a href="#ols-on-pooled-data" id="toc-ols-on-pooled-data" class="nav-link" data-scroll-target="#ols-on-pooled-data"><span class="header-section-number">4.2</span> OLS on Pooled Data</a></li>
   </ul></li>
   <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation"><span class="header-section-number">5</span> Evaluation</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6</span> Conclusion</a></li>
@@ -185,30 +188,93 @@ background: #041e42;
 </section>
 <section id="data" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="data"><span class="header-section-number">2</span> Data</h2>
-<p>South African Census Data</p>
+<p>According to their website: “Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011.”</p>
+<p>For the purposes of this study, the 2001 and 2011 datasets were utilized. Both datasets are a 10% sample.</p>
+<p><span class="citation" data-cites="statssa_census_2011">(<a href="#ref-statssa_census_2011" role="doc-biblioref">Statistics South Africa 2015</a>)</span></p>
+<p><span class="citation" data-cites="statssa_census_2001">(<a href="#ref-statssa_census_2001" role="doc-biblioref">Statistics South Africa 2011</a>)</span></p>
 </section>
 <section id="exploratory-analysis" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="exploratory-analysis"><span class="header-section-number">3</span> Exploratory Analysis</h2>
-<p>Income Graphs by Gender</p>
-<div id="fig-2011-income" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p><strong>Tables</strong></p>
+<p>Here is the 2001 summary table</p>
+<div id="fig-2001-table" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-2011-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/2011_income.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: 2011 income density plot by gender"><img src="images/2011_income.png" class="img-fluid figure-img"></a>
+<div aria-describedby="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/formatted_table_2001.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: 2001 summary table"><img src="images/formatted_table_2001.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2011-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: 2011 income density plot by gender
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 2001 summary table
 </figcaption>
 </figure>
 </div>
-<p>Tables</p>
+<p>Here is the 2011 summary table</p>
+<div id="fig-2001-table" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/formatted_table_2011.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: 2011 summary table"><img src="images/formatted_table_2011.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 2011 summary table
+</figcaption>
+</figure>
+</div>
+<p><strong>Income Graphs by Gender</strong></p>
+<p>Here’s the 2001 census data</p>
+<div id="fig-2001-income" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2001-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/2001_income.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: 2001 income density plot by gender"><img src="images/2001_income.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2001-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: 2001 income density plot by gender
+</figcaption>
+</figure>
+</div>
+<p>Here is the 2011 census data</p>
+<div id="fig-2011-income" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2011-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/2011_income.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: 2011 income density plot by gender"><img src="images/2011_income.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2011-income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: 2011 income density plot by gender
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="models" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="models"><span class="header-section-number">4</span> Models</h2>
-<p>Pushing Torwards the Asymptote of Causality</p>
-<section id="ordinary-least-squares" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="ordinary-least-squares"><span class="header-section-number">4.1</span> Ordinary Least Squares</h3>
-<p>Most Basic Model</p>
-<p>Pooling</p>
+<p>Pushing Torwards the Asymptote of Causality. . .</p>
+<section id="ordinary-least-squares-on-2011-alone" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="ordinary-least-squares-on-2011-alone"><span class="header-section-number">4.1</span> Ordinary Least Squares on 2011 Alone</h3>
+<p>Most Basic Model (2011 only)</p>
+<p>Male residual plot</p>
+<div id="fig-rd-male" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rd-male-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/rd_male_2011.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: 2001 male residuals"><img src="images/rd_male_2011.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rd-male-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: 2001 male residuals
+</figcaption>
+</figure>
+</div>
+<p>Female residual plot</p>
+<div id="fig-rd-female" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rd-female-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/rd_female_2011.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: 2001 female residuals"><img src="images/rd_female_2011.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rd-female-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: 2001 female residuals
+</figcaption>
+</figure>
+</div>
+<p>Add in a nice table of results. . .</p>
+</section>
+<section id="ols-on-pooled-data" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="ols-on-pooled-data"><span class="header-section-number">4.2</span> OLS on Pooled Data</h3>
+<p>Pooling (2001 &amp; 2011)</p>
 </section>
 </section>
 <section id="evaluation" class="level2" data-number="5">
@@ -237,6 +303,12 @@ Pellicer, Miquel, and Vimal Ranchhod. 2023. <span>“<a href="https://doi.org/10
 </div>
 <div id="ref-sakeliga_quotas_2025" class="csl-entry" role="listitem">
 Sakeliga. 2025. <span>“<a href="https://www.sakeliga.org.za/insight/government-plans-to-publish-race-quotas-for-employment-by-end-march-2025">Government Plans to Publish Race Quotas for Employment by End <span>March</span> 20</a>.”</span> <em>Sakeliga</em>.
+</div>
+<div id="ref-statssa_census_2001" class="csl-entry" role="listitem">
+Statistics South Africa. 2011. <span>“<a href="https://doi.org/10.25828/bp70-m263">South <span>African</span> <span>Census</span>, 2001</a>.”</span> Dataset. Pretoria / Cape Town: DataFirst; Statistics South Africa.
+</div>
+<div id="ref-statssa_census_2011" class="csl-entry" role="listitem">
+———. 2015. <span>“<a href="https://doi.org/10.25828/VJY1-TZ66">South <span>African</span> <span>Census</span> 2011, 10% <span>Sample</span></a>.”</span> Dataset. DataFirst.
 </div>
 </div>
 </section>

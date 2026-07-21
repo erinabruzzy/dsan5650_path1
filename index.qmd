@@ -26,23 +26,55 @@ This study aims to tackle that question by executing a pooled cross-sectional re
 
 ## Data
 
-South African Census Data
+According to their website: "Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011."
+
+For the purposes of this study, the 2001 and 2011 datasets were utilized. Both datasets are a 10% sample. 
+
+[@statssa_census_2011]
+
+[@statssa_census_2001]
 
 ## Exploratory Analysis
 
-Income Graphs by Gender
+**Tables**
+
+Here is the 2001 summary table
+
+![2001 summary table](images/formatted_table_2001.png){#fig-2001-table}
+
+Here is the 2011 summary table
+
+![2011 summary table](images/formatted_table_2011.png){#fig-2001-table}
+
+**Income Graphs by Gender**
+
+Here's the 2001 census data
+
+![2001 income density plot by gender](images/2001_income.png){#fig-2001-income}
+
+Here is the 2011 census data
 
 ![2011 income density plot by gender](images/2011_income.png){#fig-2011-income}
-
-Tables
 
 ## Models
 
 Pushing Torwards the Asymptote of Causality. . . 
 
-### Ordinary Least Squares
+### Ordinary Least Squares on 2011 Alone
 
 Most Basic Model (2011 only)
+
+Male residual plot
+
+![2001 male residuals](images/rd_male_2011.png){#fig-rd-male}
+
+Female residual plot
+
+![2001 female residuals](images/rd_female_2011.png){#fig-rd-female}
+
+Add in a nice table of results. . . 
+
+### OLS on Pooled Data
 
 Pooling (2001 & 2011)
 

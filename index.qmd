@@ -22,7 +22,7 @@ In their foundational study examining the direct effects of these Apartheid-era 
 
 The contact hypothesis [@bornman_patterns_2011] suggests a lack of contact between groups leads to negative attitudes. To foster improved intergroup attitudes, researchers argue that specific conditions must be met: equal status, shared goals, and the development of personal relationships supported and condoned by authorities. Whether post-Apartheid legislative reforms have effectively cultivated these conditions remains an open question. While all South Africans are now constitutionally recognized as equals, the state has implemented aggressive interventions, such as equity quotas for businesses with more than 50 employees, to actively redress historical disenfranchisement [@sakeliga_quotas_2025]. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. These competing sociological and political realities underscore a fundamental economic inquiry: *in the wake of Apartheid, to what extent have labor market disparities between racial categories actually changed?*
 
-This study aims to tackle that question by executing a pooled cross-sectional replication of the original research framework. Utilizing a 10% sample of microdata from the 2001 and 2011 South African Censuses, I isolate a cohort born after the formal end of Apartheid in 1994. By stratifying our sample by gender and executing Ordinary Least Squares (OLS) regression models that control for age, employment status, and discrete education levels, I directly estimate income. Ultimately, this paper evaluates whether the racial wage gap between "White" and "Coloured" cohorts has shrunk, stagnated, or increased, providing fresh insights into South African labor outcomes.
+This study aims to tackle that question by executing a pooled cross-sectional replication of the original research framework. Utilizing a 10% sample of microdata from the 2001 and 2011 South African Censuses, I analyze a cohort following the formal end of Apartheid in 1994. By stratifying the sample by gender and executing Ordinary Least Squares (OLS) regression models that control for age, employment status, and education level, I directly estimate income. Ultimately, this paper evaluates whether the racial wage gap between "White" and "Coloured" cohorts has shrunk, stagnated, or increased, providing fresh insights into South African labor outcomes.
 
 ## Data
 
@@ -62,23 +62,21 @@ Here is the 2011 census data
 
 Pushing Torwards the Asymptote of Causality. . . 
 
+The original study had to use a fuzzy regression discontinuity approach. 
+
+The data was separated for men and women and aggregated by census year to mirror the original study.
+
 ### Ordinary Least Squares on 2011 Alone
 
 Most Basic Model (2011 only)
 
-Male residual plot
-
-![2001 male residuals](images/rd_male_2011.png){#fig-rd-male}
-
-Female residual plot
-
-![2001 female residuals](images/rd_female_2011.png){#fig-rd-female}
-
-Add in a nice table of results. . . 
+![2011 OLS results](images/stargazer_2011_ols.png){#fig-2011-OLS}
 
 ### OLS on Pooled Data
 
 Pooling (2001 & 2011)
+
+A prioi threat to identification: income has a strong non-linear life-cycle profile. Introducing 2001 data should help to account for non-linearities due to life cycle patterns. 
 
 ## Evaluation
 

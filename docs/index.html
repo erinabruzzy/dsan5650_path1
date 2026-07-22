@@ -168,7 +168,7 @@ background: #041e42;
   <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="apartheid-preview.html"><i class="bi bi-journal-code"></i>South Africa 2011 Census</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="apartheid-preview.html"><i class="bi bi-journal-code"></i>South African post-Apartheid Labor Outcomes</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -191,6 +191,7 @@ background: #041e42;
 <p>According to their website: “Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011.”</p>
 <p>For the purposes of this study, the 2001 and 2011 datasets were utilized. Both datasets are a 10% sample.</p>
 <p><span class="citation" data-cites="statssa_census_2011">(<a href="#ref-statssa_census_2011" role="doc-biblioref">Statistics South Africa 2015</a>)</span></p>
+<p>Did not keep unspecified income (339531 ~7.8%) or unknown employment status (3222 ~0.1%) in data, removed entries</p>
 <p><span class="citation" data-cites="statssa_census_2001">(<a href="#ref-statssa_census_2001" role="doc-biblioref">Statistics South Africa 2011</a>)</span></p>
 </section>
 <section id="exploratory-analysis" class="level2" data-number="3">
@@ -248,29 +249,16 @@ Figure&nbsp;4: 2011 income density plot by gender
 <section id="ordinary-least-squares-on-2011-alone" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="ordinary-least-squares-on-2011-alone"><span class="header-section-number">4.1</span> Ordinary Least Squares on 2011 Alone</h3>
 <p>Most Basic Model (2011 only)</p>
-<p>Male residual plot</p>
-<div id="fig-rd-male" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2011-OLS" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rd-male-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/rd_male_2011.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: 2001 male residuals"><img src="images/rd_male_2011.png" class="img-fluid figure-img"></a>
+<div aria-describedby="fig-2011-OLS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/stargazer_2011_ols.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: 2011 OLS results"><img src="images/stargazer_2011_ols.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rd-male-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: 2001 male residuals
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2011-OLS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: 2011 OLS results
 </figcaption>
 </figure>
 </div>
-<p>Female residual plot</p>
-<div id="fig-rd-female" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rd-female-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/rd_female_2011.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: 2001 female residuals"><img src="images/rd_female_2011.png" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rd-female-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: 2001 female residuals
-</figcaption>
-</figure>
-</div>
-<p>Add in a nice table of results. . .</p>
 </section>
 <section id="ols-on-pooled-data" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="ols-on-pooled-data"><span class="header-section-number">4.2</span> OLS on Pooled Data</h3>

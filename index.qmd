@@ -32,6 +32,8 @@ For the purposes of this study, the 2001 and 2011 datasets were utilized. Both d
 
 [@statssa_census_2011]
 
+Did not keep unspecified income (339531 ~7.8%) or unknown employment status (3222 ~0.1%) in data, removed entries 
+
 [@statssa_census_2001]
 
 ## Exploratory Analysis

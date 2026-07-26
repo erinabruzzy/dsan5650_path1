@@ -16,47 +16,48 @@ abstract: |
 
 ## Introduction
 
-The history of South Africa stands as a fascinating case study for the field of `Causal Inference for Computational Social Science`. The Apartheid era was black-and-white legalized discrimination, *literally*. The implementation of the National Party's ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual's rights from "cradle to grave" [@lawal_april_2024]. Subsequent legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while "pass laws" criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act. 
+The history of South Africa stands as a fascinating case study for the field of `Causal Inference for Computational Social Science`. The Apartheid era was black-and-white legalized discrimination (literally). The implementation of the National Party's ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual's rights from "cradle to grave" [@lawal_april_2024]. Subsequent legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while "pass laws" criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act. 
 
 In their foundational study examining the direct effects of these Apartheid-era classifications, researchers utilized historical data to demonstrate that being classified as White yielded a massive 4.5x increase in income for men and an average of 5 additional years of formal education. These advantages explained approximately 94% of the total observed mean income disparity between White and Coloured men [@pellicer_understanding_2023]. 
 
-The contact hypothesis [@bornman_patterns_2011] suggests a lack of contact between groups leads to negative attitudes. To foster improved intergroup attitudes, researchers argue that specific conditions must be met: equal status, shared goals, and the development of personal relationships supported and condoned by authorities. Whether post-Apartheid legislative reforms have effectively cultivated these conditions remains an open question. While all South Africans are now constitutionally recognized as equals, the state has implemented aggressive interventions, such as equity quotas for businesses with more than 50 employees, to actively redress historical disenfranchisement [@sakeliga_quotas_2025]. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. These competing sociological and political realities underscore a fundamental economic inquiry: *in the wake of Apartheid, to what extent have labor market disparities between racial categories actually changed?*
+The contact hypothesis [@bornman_patterns_2011] suggests a lack of contact between groups leads to negative attitudes. To foster improved intergroup attitudes, researchers argue that specific conditions must be met: equal status, shared goals, and the development of personal relationships supported and condoned by authorities. Whether post-Apartheid legislative reforms have effectively cultivated these conditions remains an open question. While all South Africans are now constitutionally recognized as equals, the state has implemented aggressive interventions, such as equity quotas for businesses with more than 50 employees, to actively correct historical disenfranchisement [@sakeliga_quotas_2025]. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. The competing sociological and political realities underscore a fundamental economic inquiry: *in the wake of Apartheid, to what extent have labor market disparities between racial categories actually changed?*
 
 This study aims to tackle that question by executing a pooled cross-sectional replication of the original research framework. Utilizing a 10% sample of microdata from the 2001 and 2011 South African Censuses, I analyze a cohort following the formal end of Apartheid in 1994. By stratifying the sample by gender and executing Ordinary Least Squares (OLS) regression models that control for age, employment status, and education level, I directly estimate income. Ultimately, this paper evaluates whether the racial wage gap between "White" and "Coloured" cohorts has shrunk, stagnated, or increased, providing fresh insights into South African labor outcomes.
 
 ## Data
 
-According to their website: "Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011."
+This study uses data from the 2001 [@statssa_census_2001] and 2011 [@statssa_census_2011] South African Population Censuses^[Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011.] conducted by Statistics South Africa (Stats SA). Both the 2001 and 2011 datasets used in this analysis are 10% public-use samples of the full census population.
 
-For the purposes of this study, the 2001 and 2011 datasets were utilized. Both datasets are a 10% sample. 
+Observations with unspecified income or unknown employment status were excluded from the analysis. Specifically, 339,531 observations (~7.8% of the sample) with unspecified income and 3,222 observations (~0.1% of the sample) with unknown employment status were removed prior to analysis.
 
-[@statssa_census_2011]
+The variables were selected to match those used in the original study, which analyzed differences using sex, race, years of education, employment status, and log income. For the 2011 Census, the following variables were extracted from the person-level dataset:
 
-Did not keep unspecified income (339531 ~7.8%) or unknown employment status (3222 ~0.1%) in data, removed entries 
+* **Sex** (`F03_SEX`), coded as 1 = Male and 2 = Female
+* **Year** (`P01_YEAR`)
+* **Population group** (`P05_POP_GROUP`), coded as Black African, Coloured, Indian/Asian, White, and Other
+* **Income** (`P16_INCOME`), reported as categorical income brackets ranging from no income to R 2,457,601, with a separate category for unspecified income
+* **Educational attainment** (`P20_EDULEVEL`), ranging from Grade 0 through higher degree, with additional categories for no schooling and other qualifications
+* **Employment status** (`P23A_EMPLOYMENTSTATUS`), coded as employed, unemployed, or unknown
 
-[@statssa_census_2001]
+For the 2001 Census, comparable variables were identified to maximize consistency across survey years. These included sex (`p03_sex`), race (`p06_race`), education (`p17_educ`), employment status (`der10_em`), and income (`p22_incm`). Additional variables related to date of birth (`p02_day`, `p02_mth`, and `p02_yr`) and age (`p02_age`) were retained.
+
+The variable definitions were obtained from the official DataFirst data dictionary for the South African Census person dataset.
 
 ## Exploratory Analysis
 
-**Tables**
-
-Here is the 2001 summary table
+Figures 1 and 2 present descriptive statistics for the 2001 and 2011 Census samples by sex. Across both census years, men exhibited higher employment rates than women. In 2001, 39% of men were employed compared to 29% of women, while in 2011 employment increased slightly for both groups to 38% and 31%, respectively. Average log income also increased substantially between 2001 and 2011 for both sexes, with men consistently reporting higher average log incomes than women. Mean years of education increased considerably over the decade, rising from approximately 7.9 years in 2001 to 13.7 years in 2011 for both men and women. The proportion of White respondents remained relatively stable across years and sexes, accounting for roughly one-third of each analytic sample.
 
 ![2001 summary table](images/formatted_table_2001.png){#fig-2001-table}
 
-Here is the 2011 summary table
-
 ![2011 summary table](images/formatted_table_2011.png){#fig-2001-table}
 
-**Income Graphs by Gender**
-
-Here's the 2001 census data
+The distribution of log income by race and sex is shown in Figures 3 and 4 for the 2001 and 2011 Census samples, respectively. Both years exhibit a pronounced spike at zero log income, reflecting individuals who reported no income. Among respondents with positive income, the distributions differ noticeably by race. White respondents display income distributions centered at higher log-income values than Coloured respondents for both men and women, with the White distributions shifted to the right and exhibiting a broader upper tail
 
 ![2001 income density plot by gender](images/2001_income.png){#fig-2001-income}
 
-Here is the 2011 census data
-
 ![2011 income density plot by gender](images/2011_income.png){#fig-2011-income}
+
+Comparing the two census years, the overall shape of the income distributions remains similar, although the distributions for positive income shift toward higher log-income values in 2011. The separation between the White and Coloured income distributions is evident in both years for males and females, suggesting persistent differences in reported earnings across racial groups. Additionally, the income distributions for men are slightly shifted toward higher values than those for women within each racial group, consistent with the descriptive statistics reported in Figures 1 and 2.
 
 ## Models
 

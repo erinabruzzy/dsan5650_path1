@@ -26,7 +26,7 @@ This study aims to tackle that question by executing a pooled cross-sectional re
 
 ## Data
 
-This study uses data from the 2001 [@statssa_census_2001] and 2011 [@statssa_census_2011] South African Population Censuses^[Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation. The Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011.] conducted by Statistics South Africa (Stats SA). Both the 2001 and 2011 datasets used in this analysis are 10% public-use samples of the full census population.
+This study uses data from the 2001 [@statssa_census_2001] and 2011 [@statssa_census_2011] South African Population Censuses^[Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation; the Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011] conducted by Statistics South Africa (Stats SA). Both the 2001 and 2011 datasets used in this analysis are 10% public-use samples of the full census population.
 
 Observations with unspecified income or unknown employment status were excluded from the analysis. Specifically, 339,531 observations (~7.8% of the sample) with unspecified income and 3,222 observations (~0.1% of the sample) with unknown employment status were removed prior to analysis.
 
@@ -61,39 +61,75 @@ Comparing the two census years, the overall shape of the income distributions re
 
 ## Models
 
-Pushing Torwards the Asymptote of Causality. . . 
+The original study that this project builds on relied on fuzzy Regression Discontinuity (RD)^[According to FRDD, the outcome variable undergoes a sharp discontinuity at the threshold, but the assignment to a treatment or control group is not perfectly determined by this discontinuity; using a fuzzy score that reflects the degree of uncertainty associated with group assignment, it is possible to quantify the degree of noise in group assignment] designs to exploit localized exogenous^[An exogenous variable is an explanatory variable that is not correlated with the error term] variation. While fuzzy RD designs offer strong local internal validity, the primary drawback is in external validity: treatment effect estimates are localized strictly around the discontinuity threshold, limiting generalizability across broader populations.
 
-The original study had to use a fuzzy regression discontinuity approach. 
+Additionally, standard Ordinary Least Squares (OLS) specifications capture strong predictive associations but fail to account for omitted variable bias^[For an omitted variable to bias the results, it must correlate with the dependent variable and at least one independent variable, making it a confounding variable]. Furthermore, simple cross-sectional models cannot evaluate whether structural wage premiums persist across macro-level economic shifts or if they are artifacts of single-year selection mechanisms.
 
-The data was separated for men and women and aggregated by census year to mirror the original study.
+To address these shortcomings, this analysis proceeds in stages. I first establish baseline cross-sectional OLS estimates stratified by gender using the 2011 sample. I then progress toward a more robust pooled cross-sectional design combining the 2001 and 2011 datasets. By pooling repeated cross-sections, I evaluate how racial wage premiums evolved over a decade of institutional change, while explicitly controlling for non-linear lifecycle cohort trajectories that typically confound single-year cross-sectional estimates.
 
 ### Ordinary Least Squares on 2011 Alone
 
-Most Basic Model (2011 only)
+To establish a baseline relationship, I estimate an Ordinary Least Squares (OLS) regression separately for men and women using the 2011 sample. The dependent variable is natural log income ($\text{Log Income}_i$). To account for non-linear lifecycle earnings dynamics while mitigating multicollinearity between age terms, year of birth ($\text{YOB}_i$) is centered around the sample mean ($\overline{\text{YOB}}$).The baseline specification is defined as:
+
+$$
+\text{Log Income}_i = \beta_0 + \beta_1 \text{White}_i + \beta_2 \text{EduYears}_i + \beta_3 \text{Age}_i + \beta_4 \text{Age}_i^2 + \beta_5 \text{Employed}_i + \varepsilon_i
+$$
+
+Because log income distributions frequently exhibit heteroskedastic error^[Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)] structures across demographic strata, all specifications employ heteroskedasticity-consistent standard errors ($\text{HC1}$) to ensure reliable hypothesis testing.
+
+Figure 5 summarizes the 2011 OLS estimates stratified by gender. Across both specifications, all covariates are statistically significant at $p < 0.05$. The baseline controls account for $43.7\%$ of the variance in log income for women ($R^2 = 0.437, N = 110,480$) and $49.4\%$ of the variance for men ($R^2 = 0.494, N = 111,172$).
 
 ![2011 OLS results](images/stargazer_2011_ols.png){#fig-2011-OLS}
 
+The estimated returns to education are higher for men ($14.9\%$ log income gain per additional year of schooling) than for women ($13.3\%$). Similarly, the white wage premium is noticeably larger for men ($\hat{\beta}_1 = 0.774$) than for women ($\hat{\beta}_1 = 0.582$).
+
+The income advantage associated with active employment is almost identical across genders, approximately a $76\%$ log-income gain relative to non-employed individuals ($\hat{\beta}_2 \approx 0.76$).
+
+The negative linear coefficient on centered YOB alongside the negative quadratic term reflects the concave lifecycle earnings profile, capturing declining earnings for younger cohorts relative to middle-aged workers in the 2011 cross-section.
+
 ### OLS on Pooled Data
 
-Pooling (2001 & 2011)
+To address potential identification threats inherent in a single cross-section, the OLS model was expanded by pooling data from the 2001 and 2011 census. An a priori threat to causal inference in single-year cross-sectional models is that individual income exhibits a pronounced non-linear lifecycle trajectory. In a single cross-section, birth cohort ($\text{YOB}$) and current age are perfectly collinear, making it difficult to disentangle true shifts from standard career trajectory.
 
-A prioi threat to identification: income has a strong non-linear life-cycle profile. Introducing 2001 data should help to account for non-linearities due to life cycle patterns. 
+By introducing a second observation point a decade prior ($t = 2001$), individuals of similar ages at different points in time are observed and specific birth cohorts across different career stages are tracked. This temporal variance better identifies and controls for non-linear lifecycle patterns while evaluating structural shifts in the racial wage gap over time.
+
+$$
+\text{Log Income}_{it} = \beta_0 + \beta_1 \text{White}_{it} + \beta_2 \text{Year2011}_t + \beta_3 (\text{White}_{it} \times \text{Year2011}_t) + {\gamma} \mathbf{X}_{it} + \varepsilon_{it}
+$$
+
+where $\text{Year2011}_t$ is an indicator equal to $1$ for observations from the 2011 wave and $0$ for 2001, and $\mathbf{X}_{it}$ vector includes controls for education, employment status, centered year of birth, and its quadratic term ($\text{YOB}^2$). The parameter $\beta_1$ measures the baseline racial log-income differential in 2001, $\beta_2$ captures general macro-level income growth between 2001 and 2011, and the interaction coefficient $\beta_3$ isolates how the white income premium evolved over the ten-year period.
+
+To ensure comparability across survey years, income measures were *wrangled* prior to logarithmic transformation. The 2001 Census captured monthly income ranges, whereas the 2011 Census captured annual income ranges. Monthly 2001 values were converted to annual terms ($\times 12$) and adjusted for aggregate inflation using CPI metrics to reflect real constant 2011 values.
+
+Table 2 presents the pooled regression results for men ($N = 412,949$) and women ($N = 451,808$). The pooled specifications explain the variance with an $R^2 = 0.561$ for men and $R^2 = 0.496$ for women.
 
 ![2011 OLS results](images/stargazer_pooled_ols.png){#fig-pooled-OLS}
 
+In 2001, the baseline adjusted white wage premium ($\hat{\beta}_1$) was $113.6\%$ ($\hat{\beta}_1 = 0.759$) for men and $67.2\%$ ($\hat{\beta}_1 = 0.514$) for women. The statistically significant positive interaction terms ($\hat{\beta}_3 = 0.108, p < 0.01$ for men; $\hat{\beta}_3 = 0.179, p < 0.01$ for women) indicate that the racial wage gap expanded considerably between 2001 and 2011 across both genders, reaching $138.0\%$ for men and $99.9\%$ for women, even after controlling for education, employment status, and lifecycle controls.
+
+In the pooled model, the quadratic cohort term ($\text{YOB Squared}$) is negative and highly significant ($\hat{\beta} = -0.000, p < 0.01$), confirming an inverted-U lifecycle earnings profile across birth cohorts once broader macro-level temporal shifts are held constant.
+
+Active employment yields substantial log-income gains across both specifications ($\hat{\beta} = 0.767$ for men; $\hat{\beta} = 0.710$ for women, representing a $100\%–115\%$ wage premium over non-working or zero-income baselines). Furthermore, returns to formal education in the pooled model are consistently high across both genders, yielding an estimated $12.3\%$ increase in log earnings per year of schooling for men ($\hat{\beta} = 0.123$) and $11.1\%$ for women ($\hat{\beta} = 0.111$).
+
 ## Evaluation
 
-Evaluation Section
+The empirical findings demonstrate a substantial and expanding adjusted white wage premium across both genders between 2001 and 2011. Applying the Halvorsen-Palmquist transformation to the pooled OLS coefficients shows that controlling for education, employment status, and quadratic lifecycle cohort dynamics, the adjusted racial wage gap for men grew from 113.6% in 2001 to 138.0% in 2011. For women, the adjusted premium widened even more dramatically, rising from 67.2% to 99.9% over the same period. These estimates highlight two key structural trends: a persistent gender asymmetry where men experience higher baseline racial gaps, and a widening post-apartheid income divergence within comparable human capital cohorts.
 
-![Wage Premium](images/wage_premium_shift.png){#fig-wage-bar-chart}
+![Adjusted White Wage Premium](images/wage_premium_shift.png)
+
+Complementing these regression estimates, the empirical cumulative distribution functions (ECDF) establish clear first-order stochastic dominance. Across both survey years, the real income distribution for white workers lies strictly to the right of non-white workers across virtually all quantiles, confirming that the observed racial premium reflects systemic labor market stratification rather than top-income tail distortion. Furthermore, the shared horizontal range across both racial groups confirms common support, validating the structural comparability of the pooled samples.
+
+![ECDF Faceted Plot](images/ecdf_faceted.png)
+
+Methodologically, standardizing the 2001 monthly census reporting to annual 2011 constant Rands resolved artificial baseline scale inflation, yielding aligned mean log real incomes near 10.5 across both periods. Despite these data harmonization improvements, important identification limitations remain. Because the census lacks data on educational quality, occupational sector, and unobserved worker ability, the race coefficient absorbs residual institutional disparities. Additionally, restricting the sample to active wage earners introduces potential sample selection bias due to South Africa's high structural unemployment rate, meaning these estimates likely represent a conservative lower bound of population-wide racial income inequality.
 
 ## Conclusion
 
-Conclude
+In conclusion, this paper demonstrates that post-apartheid racial wage disparities in South Africa expanded between 2001 and 2011, even after controlling for education, employment, and non-linear lifecycle dynamics. By resolving cross-period data reporting differences and pooling repeated census waves, the empirical estimates reveal that the adjusted white wage premium rose substantially for both men and women, with first-order stochastic dominance persisting across the entire income distribution. Ultimately, these findings suggest that expanding formal educational access alone is insufficient to eliminate structural earnings gaps, highlighting the ongoing influence of systemic labor market stratification.
 
 ## Acknowledgments {.unnumbered}
 
-Professor Jacobs
+Thanks to Professor Jeff Jacobs
 
 ## References {.unnumbered}
 

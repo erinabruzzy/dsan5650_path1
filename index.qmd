@@ -38,8 +38,11 @@ The variables were selected to match those used in the original study, which ana
 * **Income** (`P16_INCOME`), reported as categorical income brackets ranging from no income to R 2,457,601, with a separate category for unspecified income
 * **Educational attainment** (`P20_EDULEVEL`), ranging from Grade 0 through higher degree, with additional categories for no schooling and other qualifications
 * **Employment status** (`P23A_EMPLOYMENTSTATUS`), coded as employed, unemployed, or unknown
+* **Province of birth** (`P07_PROV_POB`), indicating the respondent’s province of birth. Categories include the nine South African provinces, as well as outside South Africa, do not know, and unspecified responses
+* **Usual residence province** (`P10A_USUALRESPROV`), capturing the respondent’s province of usual residence. Categories include the nine South African provinces, outside South Africa, do not know, and unspecified responses
+* **Geographic type** (`P_GEOTYPE`), identifying whether the respondent resides in an urban area, traditional area, or farm area
 
-For the 2001 Census, comparable variables were identified to maximize consistency across survey years. These included sex (`p03_sex`), race (`p06_race`), education (`p17_educ`), employment status (`der10_em`), and income (`p22_incm`). Additional variables related to date of birth (`p02_day`, `p02_mth`, and `p02_yr`) and age (`p02_age`) were retained.
+For the 2001 Census, comparable variables were identified to maximize consistency across survey years. These included sex (`p03_sex`), race (`p06_race`), education (`p17_educ`), employment status (`der10_em`), and income (`p22_incm`). Additional demographic and geographic variables were retained, including year of birth (`p02_yr`), age (`p02_age`), province of birth (`p09a_prv`), usual residence province (`p11c_pru`), and geographic classification (`EATYPE96`), which provides an urban/rural classification comparable to the 2011 geographic type variable.
 
 The variable definitions were obtained from the official DataFirst data dictionary for the South African Census person dataset.
 
@@ -51,7 +54,7 @@ Figures 1 and 2 present descriptive statistics for the 2001 and 2011 Census samp
 
 ![2011 summary table](images/formatted_table_2011.png){#fig-2001-table}
 
-The distribution of log income by race and sex is shown in Figures 3 and 4 for the 2001 and 2011 Census samples, respectively. Both years exhibit a pronounced spike at zero log income, reflecting individuals who reported no income. Among respondents with positive income, the distributions differ noticeably by race. White respondents display income distributions centered at higher log-income values than Coloured respondents for both men and women, with the White distributions shifted to the right and exhibiting a broader upper tail
+The distribution of log income by race and sex is shown in Figures 3 and 4 for the 2001 and 2011 Census samples, respectively. Both years exhibit a pronounced spike at zero log income, reflecting individuals who reported no income. Among respondents with positive income, the distributions differ noticeably by race. White respondents display income distributions centered at higher log-income values than Coloured respondents for both men and women, with the White distributions shifted to the right and exhibiting a broader upper tail.
 
 ![2001 income density plot by gender](images/2001_income.png){#fig-2001-income}
 
@@ -61,7 +64,7 @@ Comparing the two census years, the overall shape of the income distributions re
 
 ## Models
 
-The original study that this project builds on relied on fuzzy Regression Discontinuity (RD)^[According to FRDD, the outcome variable undergoes a sharp discontinuity at the threshold, but the assignment to a treatment or control group is not perfectly determined by this discontinuity; using a fuzzy score that reflects the degree of uncertainty associated with group assignment, it is possible to quantify the degree of noise in group assignment] designs to exploit localized exogenous^[An exogenous variable is an explanatory variable that is not correlated with the error term] variation. While fuzzy RD designs offer strong local internal validity, the primary drawback is in external validity: treatment effect estimates are localized strictly around the discontinuity threshold, limiting generalizability across broader populations.
+The original study that this project builds on relied on fuzzy Regression Discontinuity (RD)^[According to FRDD, the outcome variable undergoes a sharp discontinuity at the threshold, but the assignment to a treatment or control group is not perfectly determined by this discontinuity; using a fuzzy score that reflects the degree of uncertainty associated with group assignment, it is possible to quantify the degree of noise in group assignment] designed to exploit localized exogenous^[An exogenous variable is an explanatory variable that is not correlated with the error term] variation. While fuzzy RD designs offer strong local internal validity, the primary drawback is in external validity: treatment effect estimates are localized strictly around the discontinuity threshold, limiting generalizability across broader populations.
 
 Additionally, standard Ordinary Least Squares (OLS) specifications capture strong predictive associations but fail to account for omitted variable bias^[For an omitted variable to bias the results, it must correlate with the dependent variable and at least one independent variable, making it a confounding variable]. Furthermore, simple cross-sectional models cannot evaluate whether structural wage premiums persist across macro-level economic shifts or if they are artifacts of single-year selection mechanisms.
 
@@ -69,13 +72,13 @@ To address these shortcomings, this analysis proceeds in stages. I first establi
 
 ### Ordinary Least Squares on 2011 Alone
 
-To establish a baseline relationship, I estimate an Ordinary Least Squares (OLS) regression separately for men and women using the 2011 sample. The dependent variable is natural log income ($\text{Log Income}_i$). To account for non-linear lifecycle earnings dynamics while mitigating multicollinearity between age terms, year of birth ($\text{YOB}_i$) is centered around the sample mean ($\overline{\text{YOB}}$).The baseline specification is defined as:
+To establish a baseline relationship, I estimate an Ordinary Least Squares (OLS) regression separately for men and women using the 2011 sample. The dependent variable is natural log income. To account for non-linear lifecycle earnings dynamics while mitigating multicollinearity between age terms, year of birth is centered around the sample mean. The baseline specification is defined as:
 
 $$
 \text{Log Income}_i = \beta_0 + \beta_1 \text{White}_i + \beta_2 \text{EduYears}_i + \beta_3 \text{Age}_i + \beta_4 \text{Age}_i^2 + \beta_5 \text{Employed}_i + \varepsilon_i
 $$
 
-Because log income distributions frequently exhibit heteroskedastic error^[Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)] structures across demographic strata, all specifications employ heteroskedasticity-consistent standard errors ($\text{HC1}$) to ensure reliable hypothesis testing.
+Because log income distributions frequently exhibit heteroskedastic error^[Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)] structures across demographic strata, all specifications employ heteroskedasticity-consistent standard errors to ensure reliable hypothesis testing.
 
 Figure 5 summarizes the 2011 OLS estimates stratified by gender. Across both specifications, all covariates are statistically significant at $p < 0.05$. The baseline controls account for $43.7\%$ of the variance in log income for women ($R^2 = 0.437, N = 110,480$) and $49.4\%$ of the variance for men ($R^2 = 0.494, N = 111,172$).
 
@@ -105,11 +108,9 @@ Table 2 presents the pooled regression results for men ($N = 412,949$) and women
 
 ![2001 & 2011 Pooled OLS results](images/stargazer_pooled_ols.png){#fig-pooled-OLS}
 
-In 2001, the baseline adjusted white wage premium ($\hat{\beta}_1$) was $113.6\%$ ($\hat{\beta}_1 = 0.759$) for men and $67.2\%$ ($\hat{\beta}_1 = 0.514$) for women. The statistically significant positive interaction terms ($\hat{\beta}_3 = 0.108, p < 0.01$ for men; $\hat{\beta}_3 = 0.179, p < 0.01$ for women) indicate that the racial wage gap expanded considerably between 2001 and 2011 across both genders, reaching $138.0\%$ for men and $99.9\%$ for women, even after controlling for education, employment status, and lifecycle controls.
+In the pooled model, the quadratic cohort term (${YOB}^2$) is negative and highly significant ($\hat{\beta} = -0.000, p < 0.01$), confirming an inverted-U lifecycle earnings profile across birth cohorts once broader macro-level temporal shifts are held constant.
 
-In the pooled model, the quadratic cohort term ($\text{YOB Squared}$) is negative and highly significant ($\hat{\beta} = -0.000, p < 0.01$), confirming an inverted-U lifecycle earnings profile across birth cohorts once broader macro-level temporal shifts are held constant.
-
-Active employment yields substantial log-income gains across both specifications ($\hat{\beta} = 0.767$ for men; $\hat{\beta} = 0.710$ for women, representing a $100\%–115\%$ wage premium over non-working or zero-income baselines). Furthermore, returns to formal education in the pooled model are consistently high across both genders, yielding an estimated $12.3\%$ increase in log earnings per year of schooling for men ($\hat{\beta} = 0.123$) and $11.1\%$ for women ($\hat{\beta} = 0.111$).
+Active employment yields substantial log-income gains across both specifications ($\hat{\beta} = 0.763$ for men; $\hat{\beta} = 0.705$ for women, representing a $100\%–115\%$ wage premium over non-working or zero-income baselines). Furthermore, returns to formal education in the pooled model are consistently high across both genders, yielding an estimated $13\%$ increase in log earnings per year of schooling for men ($\hat{\beta} = 0.129$) and $12\%$ for women ($\hat{\beta} = 0.116$).
 
 ### Propensity Score Matching
 
@@ -136,8 +137,6 @@ The empirical findings demonstrate a substantial and expanding adjusted white wa
 Complementing these regression estimates, the empirical cumulative distribution functions (ECDF) establish clear first-order stochastic dominance. Across both survey years, the real income distribution for white workers lies strictly to the right of non-white workers across virtually all quantiles, confirming that the observed racial premium reflects systemic labor market stratification rather than top-income tail distortion. Furthermore, the shared horizontal range across both racial groups confirms common support, validating the structural comparability of the pooled samples.
 
 ![ECDF Faceted Plot](images/ecdf_faceted.png)
-
-Methodologically, standardizing the 2001 monthly census reporting to annual 2011 constant Rands resolved artificial baseline scale inflation, yielding aligned mean log real incomes near 10.5 across both periods. Despite these data harmonization improvements, important identification limitations remain. Because the census lacks data on educational quality, occupational sector, and unobserved worker ability, the race coefficient absorbs residual institutional disparities. Additionally, restricting the sample to active wage earners introduces potential sample selection bias due to South Africa's high structural unemployment rate, meaning these estimates likely represent a conservative lower bound of population-wide racial income inequality.
 
 ## Conclusion
 

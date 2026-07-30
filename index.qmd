@@ -103,7 +103,7 @@ To ensure comparability across survey years, income measures were *wrangled* pri
 
 Table 2 presents the pooled regression results for men ($N = 412,949$) and women ($N = 451,808$). The pooled specifications explain the variance with an $R^2 = 0.558$ for men and $R^2 = 0.495$ for women.
 
-![2011 OLS results](images/stargazer_pooled_ols.png){#fig-pooled-OLS}
+![2001 & 2011 Pooled OLS results](images/stargazer_pooled_ols.png){#fig-pooled-OLS}
 
 In 2001, the baseline adjusted white wage premium ($\hat{\beta}_1$) was $113.6\%$ ($\hat{\beta}_1 = 0.759$) for men and $67.2\%$ ($\hat{\beta}_1 = 0.514$) for women. The statistically significant positive interaction terms ($\hat{\beta}_3 = 0.108, p < 0.01$ for men; $\hat{\beta}_3 = 0.179, p < 0.01$ for women) indicate that the racial wage gap expanded considerably between 2001 and 2011 across both genders, reaching $138.0\%$ for men and $99.9\%$ for women, even after controlling for education, employment status, and lifecycle controls.
 
@@ -113,7 +113,19 @@ Active employment yields substantial log-income gains across both specifications
 
 ### Propensity Score Matching
 
-Insert Content Here. . . 
+Propensity Score Matching is a statistical technique used to reduce selection bias by matching individuals from different groups based on similar characteristics. It attempts to simulate the conditions of a randomized experiment.
+
+A propensity score is the probability that an individual receives the treatment given a set of observed covariates.
+
+$e(x) = P(T=1 | X)$
+
+This study aims to estimate the probability of an individual being classified into a specific racial group based on their observable background traits.
+
+- Treatment ($D_i$): Racial classification (e.g., $D_i = 1$ if White, $D_i = 0$ if Coloured or African)
+- Covariates ($X_i$): Observable characteristics that shouldn't logically be downstream consequences of the treatment, or that represent pre-market baseline traits—primarily Birth Cohort / Age, Province/Geography, and Gender
+- Propensity Score ($P(X_i)$): $P(D_i = 1 \mid X_i) = \text{Probability of being White given your age, location, and gender}$
+
+![Propensity Score Matching OLS results](images/stargazer_propensity_ols.png){#fig-propensity-OLS}
 
 ## Evaluation
 

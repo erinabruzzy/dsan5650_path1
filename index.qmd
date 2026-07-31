@@ -16,7 +16,7 @@ abstract: |
 
 ## Introduction
 
-The history of South Africa stands as a fascinating case study for the field of `Causal Inference for Computational Social Science`. The Apartheid era was black-and-white legalized discrimination (literally). The implementation of the National Party's ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual's rights from "cradle to grave" [@lawal_april_2024]. Subsequent legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while "pass laws" criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act. 
+The history of South Africa stands as a fascinating case study for the field of `Causal Inference for Computational Social Science`. The Apartheid era was black-and-white legalized discrimination^[literally]. The implementation of the National Party's ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual's rights from "cradle to grave" [@lawal_april_2024]. Subsequent legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while "pass laws" criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act. 
 
 In their foundational study examining the direct effects of these Apartheid-era classifications, researchers utilized historical data to demonstrate that being classified as White yielded a massive 4.5x increase in income for men and an average of 5 additional years of formal education. These advantages explained approximately 94% of the total observed mean income disparity between White and Coloured men [@pellicer_understanding_2023]. 
 
@@ -48,19 +48,29 @@ The variable definitions were obtained from the official DataFirst data dictiona
 
 ## Exploratory Analysis
 
-Figures 1 and 2 present descriptive statistics for the 2001 and 2011 Census samples by sex. Across both census years, men exhibited higher employment rates than women. In 2001, 39% of men were employed compared to 29% of women, while in 2011 employment increased slightly for both groups to 38% and 31%, respectively. Average log income also increased substantially between 2001 and 2011 for both sexes, with men consistently reporting higher average log incomes than women. Mean years of education increased considerably over the decade, rising from approximately 7.6 years in 2001 to 13.7 years in 2011 for both men and women. The proportion of White respondents remained relatively stable across years and sexes, accounting for roughly one-third of each analytic sample.
+Figure 1 presents descriptive statistics for the 2001 and 2011 Census samples by sex. Across both census years, men exhibited higher employment rates than women. In 2001, 39% of men were employed compared to 29% of women, while in 2011 employment increased slightly for both groups to 38% and 31%, respectively. Average log income also increased substantially between 2001 and 2011 for both sexes, with men consistently reporting higher average log incomes than women. Mean years of education increased considerably over the decade, rising from approximately 7.6 years in 2001 to 13.7 years in 2011 for both men and women. The proportion of White respondents remained relatively stable across years and sexes, accounting for roughly one-third of each analytic sample.
+
+::: {#fig-summary layout-ncol=2}
 
 ![2001 summary table](images/formatted_table_2001.png){#fig-2001-table}
 
 ![2011 summary table](images/formatted_table_2011.png){#fig-2001-table}
 
-The distribution of log income by race and sex is shown in Figures 3 and 4 for the 2001 and 2011 Census samples, respectively. Both years exhibit a pronounced spike at zero log income, reflecting individuals who reported no income. Among respondents with positive income, the distributions differ noticeably by race. White respondents display income distributions centered at higher log-income values than Coloured respondents for both men and women, with the White distributions shifted to the right and exhibiting a broader upper tail.
+2001 & 2011 Census Data Summary Tables
+:::
+
+The distribution of log income by race and sex is shown in Figure 2 for the 2001 and 2011 Census samples. Both years exhibit a pronounced spike at zero log income, reflecting individuals who reported no income. Among respondents with positive income, the distributions differ noticeably by race. White respondents display income distributions centered at higher log-income values than Coloured respondents for both men and women, with the White distributions shifted to the right and exhibiting a broader upper tail.
+
+::: {#fig-income layout-ncol=2}
 
 ![2001 income density plot by gender](images/2001_income.png){#fig-2001-income}
 
 ![2011 income density plot by gender](images/2011_income.png){#fig-2011-income}
 
-Comparing the two census years, the overall shape of the income distributions remains similar, although the distributions for positive income shift toward higher log-income values in 2011. The separation between the White and Coloured income distributions is evident in both years for males and females, suggesting persistent differences in reported earnings across racial groups. Additionally, the income distributions for men are slightly shifted toward higher values than those for women within each racial group, consistent with the descriptive statistics reported in Figures 1 and 2.
+2001 & 2011 Income Density Plots
+:::
+
+Comparing the two census years, the overall shape of the income distributions remains similar, although the distributions for positive income shift toward higher log-income values in 2011. The separation between the White and Coloured income distributions is evident in both years for males and females, suggesting persistent differences in reported earnings across racial groups. Additionally, the income distributions for men are slightly shifted toward higher values than those for women within each racial group, consistent with the descriptive statistics reported in Figure 1.
 
 ## Models
 
@@ -80,7 +90,7 @@ $$
 
 Because log income distributions frequently exhibit heteroskedastic error^[Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)] structures across demographic strata, all specifications employ heteroskedasticity-consistent standard errors to ensure reliable hypothesis testing.
 
-Figure 5 summarizes the 2011 OLS estimates stratified by gender. Across both specifications, all covariates are statistically significant at $p < 0.05$. The baseline controls account for $43.7\%$ of the variance in log income for women ($R^2 = 0.437, N = 110,480$) and $49.4\%$ of the variance for men ($R^2 = 0.494, N = 111,172$).
+Figure 3 summarizes the 2011 OLS estimates stratified by gender. Across both specifications, all covariates are statistically significant at $p < 0.05$. The baseline controls account for $43.7\%$ of the variance in log income for women ($R^2 = 0.437, N = 110,480$) and $49.4\%$ of the variance for men ($R^2 = 0.494, N = 111,172$).
 
 ![2011 OLS results](images/stargazer_2011_ols.png){#fig-2011-OLS}
 
@@ -104,7 +114,7 @@ where $\text{Year2011}_t$ is an indicator equal to $1$ for observations from the
 
 To ensure comparability across survey years, income measures were *wrangled* prior to logarithmic transformation. The 2001 Census captured monthly income ranges, whereas the 2011 Census captured annual income ranges. Monthly 2001 values were converted to annual terms ($\times 12$) and adjusted for aggregate inflation using CPI metrics to reflect real constant 2011 values.
 
-Table 2 presents the pooled regression results for men ($N = 412,949$) and women ($N = 451,808$). The pooled specifications explain the variance with an $R^2 = 0.558$ for men and $R^2 = 0.495$ for women.
+Figure 4 presents the pooled regression results for men ($N = 412,949$) and women ($N = 451,808$). The pooled specifications explain the variance with an $R^2 = 0.558$ for men and $R^2 = 0.495$ for women.
 
 ![2001 & 2011 Pooled OLS results](images/stargazer_pooled_ols.png){#fig-pooled-OLS}
 
@@ -114,23 +124,54 @@ Active employment yields substantial log-income gains across both specifications
 
 ### Propensity Score Matching
 
-Propensity Score Matching is a statistical technique used to reduce selection bias by matching individuals from different groups based on similar characteristics. It attempts to simulate the conditions of a randomized experiment.
+Estimating the causal impact of demographic attributes on economic outcomes presents a fundamental problem of causal inference: counterfactual outcomes for a given individual are unobservable. To approximate experimental conditions in observational microdata, this study employs Propensity Score Matching (PSM) [@rosenbaum1983central].The propensity score, $e(X_i)$, is defined as the conditional probability of receiving treatment $D_i$ given a vector of observed pre-treatment covariates $X_i$:
 
-A propensity score is the probability that an individual receives the treatment given a set of observed covariates.
+$$
+e(X_i) = P(D_i = 1 \mid X_i)
+$$
 
-$e(x) = P(T=1 | X)$
+In this context, the treatment variable $D_i$ indicates racial classification, where $D_i = 1$ denotes White individuals and $D_i = 0$ denotes non-White individuals. The vector $X_i$ contains birth cohort (age), education, province of birth, urban residence, and employment status, variables that dictate selection into treatment status.
 
-This study aims to estimate the probability of an individual being classified into a specific racial group based on their observable background traits.
+Matching constructs a counterfactual control group by pairing each treated observation with control observations exhibiting similar predicted propensity scores. Under the assumption of conditional independence (unconfoundedness given $X_i$), this procedure eliminates selection bias on observable characteristics.
 
-- Treatment ($D_i$): Racial classification (e.g., $D_i = 1$ if White, $D_i = 0$ if Coloured or African)
-- Covariates ($X_i$): Observable characteristics that shouldn't logically be downstream consequences of the treatment, or that represent pre-market baseline traits—primarily Birth Cohort / Age, Province/Geography, and Gender
-- Propensity Score ($P(X_i)$): $P(D_i = 1 \mid X_i) = \text{Probability of being White given your age, location, and gender}$
+The propensity scores are estimated separately by gender using logistic regression:
+
+$$
+\text{logit}(P(D_i = 1 \mid X_i)) = \beta_0 + \beta_1 \text{YOB}_i + \beta_2 \text{YOB}_i^2 + \beta_3 \text{Edu}_i + \beta_4 \text{Employed}_i + \beta_5 \text{Urban}_i + \gamma \text{Province}_i + \delta \text{Year2011}_i
+$$
+
+To satisfy the common support assumption that there is an overlap in the propensity score distributions between treatment and control groups, sample bounds are enforced using min-max trimming on the logit scale:
+
+$$
+\text{Supp}(P(X \mid D=1)) \cap \text{Supp}(P(X \mid D=0)) \neq \emptyset
+$$
+
+Observations falling outside the mutual logit-score boundaries are discarded to eliminate boundary extrapolation. As illustrated by figure 5, substantial common support exists across both sub-samples, ensuring that matched pairs reflect true demographic overlap. Following common support enforcement, 1:1 nearest-neighbor matching without replacement is executed on the logit distance scale.
+
+::: {#fig-common-support layout-ncol=2}
+
+![Men](images/male_support.png){#fig-male}
+
+![Women](images/female_support.png){#fig-female}
+
+Propensity Score Common Support Visualizations by Gender
+:::
+
+The OLS model is specified as:
+
+$$
+\log(\text{Real Income}_i) = \alpha + \beta_1 \text{White}_i + \beta_2 \text{Year2011}_i + \beta_3 (\text{White}_i \times \text{Year2011}_i) + \boldsymbol{\mathbf{X}_i\Gamma} + \mathbf{\delta_p} + \varepsilon_i
+$$
+
+where $\boldsymbol{\mathbf{X}_i}$ includes employment status, completed years of education, centered year of birth, quadratic age controls, and urban residence, while $\mathbf{\delta_p}$ represents province-of-birth fixed effects. Heteroskedasticity-robust standard errors (HC1) are reported across all models.
 
 ![Propensity Score Matching OLS results](images/stargazer_propensity_ols.png){#fig-propensity-OLS}
 
+Holding education, age, geography, and employment status constant on matched support, White men earned a baseline premium of $0.628$ log points ($\approx 87\%$) over non-White men in 2001. White women earned a smaller baseline premium of $0.399$ log points ($\approx 49\%$). For men, the interaction term is negative and statistically significant ($\beta_3 = -0.110, p < 0.01$). This indicates that the racial wage gap among demographically matched male peers narrowed by approximately 11 percentage points over the decade. For women, the interaction coefficient is statistically indistinguishable from zero ($\beta_3 = -0.003, p = 0.882$). Controlling for human capital selection via PSM reveals that the conditional racial wage gap among comparable women remained stagnant over the period. Years of education yield strong positive returns across both groups, with men experiencing slightly higher wage returns per year of education ($16.3\%$) relative to women ($13.4\%$).
+
 ## Evaluation
 
-The empirical findings demonstrate a substantial and expanding adjusted white wage premium across both genders between 2001 and 2011. Applying the Halvorsen-Palmquist transformation to the pooled OLS coefficients shows that controlling for education, employment status, and quadratic lifecycle cohort dynamics, the adjusted racial wage gap for men grew from 113.6% in 2001 to 138.0% in 2011. For women, the adjusted premium widened even more dramatically, rising from 67.2% to 99.9% over the same period. These estimates highlight two key structural trends: a persistent gender asymmetry where men experience higher baseline racial gaps, and a widening post-apartheid income divergence within comparable human capital cohorts.
+The empirical findings demonstrate a substantial and expanding adjusted white wage premium across both genders between 2001 and 2011. The adjusted racial wage gap for men grew from 113.6% in 2001 to 138.0% in 2011. For women, the adjusted premium widened even more dramatically, rising from 67.2% to 99.9% over the same period. These estimates highlight two key structural trends: a persistent gender asymmetry where men experience higher baseline racial gaps, and a widening post-apartheid income divergence within comparable human capital cohorts.
 
 ![Adjusted White Wage Premium](images/wage_premium_shift.png)
 

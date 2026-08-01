@@ -1,4 +1,4 @@
-# Has Anything Actually Changed? Post-Apartheid Labor Outcomes in South Africa
+# Has Anything Actually Changed? Post-Apartheid Labour Market Outcomes in South Africa
 
 **Erin Brzusek**  
 Georgetown University
@@ -35,4 +35,4 @@ In their study examining the direct impacts of Apartheid-era racial classificati
 
 Though Apartheid formally ended in 1994, whether market forces and post-Apartheid reforms have succeeded in closing historical gaps remains unknown. While all South Africans are now constitutionally recognized as equals, state policies such as employment equity targets were explicitly designed to remediate historical disenfranchisement. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. The competing sociological and political realities underscore a fundamental economic inquiry: *in the wake of Apartheid, to what extent have labour market outcomes between racial categories actually changed?*
 
-This study seeks to address this question by examining a decade of post-Apartheid labor dynamics using 10% microdata samples from the 2001 and 2011 South African Censuses. To address omitted variable bias and non-linearities, I employ various approaches to Ordinary Least Squares (OLS) regression including single cross-section, pooled cross-section, and propensity score matching. Ultimately, this paper evaluates whether the conditional racial wage gap between White and non-White individuals has narrowed, stagnated, or widened, providing new empirical evidence on post-Apartheid economic convergence.
+This study seeks to address this question by examining a decade of post-Apartheid labour dynamics using 10% microdata samples from the 2001 and 2011 South African Censuses. To address omitted variable bias and non-linearities, I employ various approaches to Ordinary Least Squares (OLS) regression including single cross-section, pooled cross-section, and propensity score matching. Ultimately, this paper evaluates whether the conditional racial wage gap between White and non-White individuals has narrowed, stagnated, or widened, providing new empirical evidence on post-Apartheid economic convergence.

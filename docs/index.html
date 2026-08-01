@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-08-05">
 
-<title>Has Anything Actually Changed? Post-Apartheid Labor Outcomes in South Africa</title>
+<title>Has Anything Actually Changed? Post-Apartheid Labour Market Outcomes in South Africa</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,8 +108,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="style.css">
-<meta name="citation_title" content="Has Anything Actually Changed? Post-Apartheid Labor Outcomes in South Africa">
-<meta name="citation_abstract" content="This study seeks to examine the long-term economic effects of legalized discrimination in post-Apartheid South Africa. Recreating the methodological framework of previous research on the effects of government-mandated racial classification, I utilize data from the 2001 and 2011 South African Census to evaluate labor outcomes. Specifically, I analyze income disparities among men and women across &amp;amp;quot;White&quot; and &quot;Coloured&quot; racial categories. Utilizing various approaches to Ordinary Least Squares (OLS) regression, I analyze income and assess the extent to which historical socioeconomic divides persist. By recreating the previous analysis with more recent census data, this project provides insights into the current state of economic inequality in South Africa.
+<meta name="citation_title" content="Has Anything Actually Changed? Post-Apartheid Labour Market Outcomes in South Africa">
+<meta name="citation_abstract" content="This study seeks to examine the long-term economic impact of legalized discrimination in post-Apartheid South Africa. Recreating the methodological framework of previous research on the effects of government-mandated racial classification, I utilize data from the 2001 and 2011 South African Census to evaluate labour market outcomes. Specifically, I analyze income disparities among men and women across &amp;amp;quot;White&quot; and &quot;Coloured&quot; racial categories. Utilizing various approaches to Ordinary Least Squares (OLS) regression, I analyze income and assess the extent to which historical socioeconomic divides persist. By recreating the previous analysis with more recent census data, this project provides insights into the current state of economic inequality in South Africa.
 ">
 <meta name="citation_author" content="Erin Brzusek">
 <meta name="citation_publication_date" content="2026-08-05">
@@ -131,7 +131,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Has Anything Actually Changed? Post-Apartheid Labor Outcomes in South Africa</h1>
+      <h1 class="title">Has Anything Actually Changed? Post-Apartheid Labour Market Outcomes in South Africa</h1>
             <p class="subtitle lead">DSAN 5650: Causal Inference for Computational Social Science</p>
           </div>
 
@@ -172,7 +172,7 @@ window.Quarto = {
     <div>
       <div class="abstract">
         <div class="block-title">Abstract</div>
-        <p>This study seeks to examine the long-term economic effects of legalized discrimination in post-Apartheid South Africa. Recreating the methodological framework of previous research on the effects of government-mandated racial classification, I utilize data from the 2001 and 2011 South African Census to evaluate labor outcomes. Specifically, I analyze income disparities among men and women across “White” and “Coloured” racial categories. Utilizing various approaches to Ordinary Least Squares (OLS) regression, I analyze income and assess the extent to which historical socioeconomic divides persist. By recreating the previous analysis with more recent census data, this project provides insights into the current state of economic inequality in South Africa.</p>
+        <p>This study seeks to examine the long-term economic impact of legalized discrimination in post-Apartheid South Africa. Recreating the methodological framework of previous research on the effects of government-mandated racial classification, I utilize data from the 2001 and 2011 South African Census to evaluate labour market outcomes. Specifically, I analyze income disparities among men and women across “White” and “Coloured” racial categories. Utilizing various approaches to Ordinary Least Squares (OLS) regression, I analyze income and assess the extent to which historical socioeconomic divides persist. By recreating the previous analysis with more recent census data, this project provides insights into the current state of economic inequality in South Africa.</p>
       </div>
     </div>
 
@@ -212,28 +212,28 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>The history of South Africa stands as a fascinating case study for the field of <code>Causal Inference for Computational Social Science</code>. The Apartheid era was black-and-white legalized discrimination<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The implementation of the National Party’s ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual’s rights from “cradle to grave” <span class="citation" data-cites="lawal_april_2024">(<a href="#ref-lawal_april_2024" role="doc-biblioref">Lawal 2024</a>)</span>. Legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while “pass laws” criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act.</p>
-<p>In their study examining the direct impacts of Apartheid-era racial classifications, <span class="citation" data-cites="pellicer_understanding_2023">(<a href="#ref-pellicer_understanding_2023" role="doc-biblioref">Pellicer and Ranchhod 2023</a>)</span> utilized historical census microdata around the Registration Act of 1950 in a Fuzzy Regression Discontinuity (Fuzzy RD) framework. The Fuzzy RD design isolated the causal effect of being classified as White rather than Coloured. Their findings demonstrate that receiving a White classification yielded a massive 4.5-fold increase in male income and an average of 5 additional years of formal education. This accounted for approximately 94% of the total observed mean income disparity between White and Coloured men.</p>
-<p>Though Apartheid formally ended in 1994, whether market forces and post-Apartheid reforms have succeeded in closing historical gaps remains a question. While all South Africans are now constitutionally recognized as equals, state policies such as employment equity targets <span class="citation" data-cites="sakeliga_quotas_2025">(<a href="#ref-sakeliga_quotas_2025" role="doc-biblioref">Sakeliga 2025</a>)</span> were explicitly designed to remediate historical disenfranchisement. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. The competing sociological and political realities underscore a fundamental economic inquiry: <em>in the wake of Apartheid, to what extent have labor market disparities between racial categories actually changed?</em></p>
+<p>The history of South Africa stands as a fascinating case study for the field of <code>Causal Inference for Computational Social Science</code>. The Apartheid era was black-and-white legalized discrimination. The implementation of the National Party’s ideological framework hinged on the Population Registration Act of 1950, which required every citizen to be classified and registered under racial categories. The government was then able to dictate an individual’s rights from “cradle to grave” <span class="citation" data-cites="lawal_april_2024">(<a href="#ref-lawal_april_2024" role="doc-biblioref">Lawal 2024</a>)</span>. Legislation such as the Group Areas Act forced non-white populations into the country’s most economically unproductive areas, while “pass laws” criminalized the unregulated movement of Coloured citizens within urban spaces. Systemic oppression extended to all individual pursuits: schools were segregated and interpersonal relationships across racial lines were legally barred through measures like the Prohibition of Mixed Marriages Act.</p>
+<p>In their study examining the direct impacts of Apartheid-era racial classifications, <span class="citation" data-cites="pellicer_understanding_2023">(<a href="#ref-pellicer_understanding_2023" role="doc-biblioref">Pellicer and Ranchhod 2023</a>)</span> utilized historical census microdata around the Registration Act of 1950 in a fuzzy Regression Discontinuity framework. Their findings demonstrate that receiving a White classification yielded a massive 4.5-fold increase in male income and an average of 5 additional years of formal education. This accounted for over 90% of the total observed mean income disparity between White and Coloured men.</p>
+<p>Though Apartheid formally ended in 1994, whether market forces and post-Apartheid reforms have succeeded in closing historical gaps remains unknown. While all South Africans are now constitutionally recognized as equals, state policies such as employment equity targets <span class="citation" data-cites="sakeliga_quotas_2025">(<a href="#ref-sakeliga_quotas_2025" role="doc-biblioref">Sakeliga 2025</a>)</span> were explicitly designed to remediate historical disenfranchisement. These policies remain highly contentious; critics characterize them as unconstitutional forms of social engineering. The competing sociological and political realities underscore a fundamental economic inquiry: <em>in the wake of Apartheid, to what extent have labour market outcomes between racial categories actually changed?</em></p>
 <p>This study seeks to address this question by examining a decade of post-Apartheid labor dynamics using 10% microdata samples from the 2001 and 2011 South African Censuses. To address omitted variable bias and non-linearities, I employ various approaches to Ordinary Least Squares (OLS) regression including single cross-section, pooled cross-section, and propensity score matching. Ultimately, this paper evaluates whether the conditional racial wage gap between White and non-White individuals has narrowed, stagnated, or widened, providing new empirical evidence on post-Apartheid economic convergence.</p>
 </section>
 <section id="data" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="data"><span class="header-section-number">2</span> Data</h2>
-<p>This study uses data from the 2001 <span class="citation" data-cites="statssa_census_2001">(<a href="#ref-statssa_census_2001" role="doc-biblioref">Statistics South Africa 2011</a>)</span> and 2011 <span class="citation" data-cites="statssa_census_2011">(<a href="#ref-statssa_census_2011" role="doc-biblioref">Statistics South Africa 2015</a>)</span> South African Population Censuses<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> conducted by Statistics South Africa (Stats SA). Both the 2001 and 2011 datasets used in this analysis are 10% public-use samples of the full census population.</p>
+<p>This study uses data from the 2001 <span class="citation" data-cites="statssa_census_2001">(<a href="#ref-statssa_census_2001" role="doc-biblioref">Statistics South Africa 2011</a>)</span> and 2011 <span class="citation" data-cites="statssa_census_2011">(<a href="#ref-statssa_census_2011" role="doc-biblioref">Statistics South Africa 2015</a>)</span> South African Population Censuses<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> conducted by Statistics South Africa (Stats SA). Both the 2001 and 2011 datasets used in this analysis are 10% public-use samples of the full census population.</p>
 <p>Observations with unspecified income or unknown employment status were excluded from the analysis. From 2011 alone, 339,531 observations (~7.8% of the sample) with unspecified income and 3,222 observations (~0.1% of the sample) with unknown employment status were removed prior to analysis.</p>
 <p>The variables were selected to match those used in the original study, which analyzed differences using sex, race, years of education, employment status, and log income. For the 2011 Census, the following variables were extracted from the person-level dataset:</p>
 <ul>
 <li><strong>Sex</strong> (<code>F03_SEX</code>), coded as 1 = Male and 2 = Female</li>
 <li><strong>Year of Birth</strong> (<code>P01_YEAR</code>)</li>
 <li><strong>Population group</strong> (<code>P05_POP_GROUP</code>), coded as Black African, Coloured, Indian/Asian, White, and Other</li>
-<li><strong>Income</strong> (<code>P16_INCOME</code>), reported as categorical income brackets ranging from no income to R 2,457,601, with a separate category for unspecified income</li>
+<li><strong>Income</strong> (<code>P16_INCOME</code>), reported as categorical income brackets ranging from no income to R 2,457,601</li>
 <li><strong>Education</strong> (<code>P20_EDULEVEL</code>), ranging from Grade 0 through higher degree, with additional categories for no schooling and other qualifications</li>
 <li><strong>Employment status</strong> (<code>P23A_EMPLOYMENTSTATUS</code>), coded as employed, unemployed, or unknown</li>
-<li><strong>Province of birth</strong> (<code>P07_PROV_POB</code>), indicating the respondent’s province of birth. Categories include the nine South African provinces, as well as outside South Africa, do not know, and unspecified responses</li>
-<li><strong>Usual residence province</strong> (<code>P10A_USUALRESPROV</code>), capturing the respondent’s province of usual residence. Categories include the nine South African provinces, outside South Africa, do not know, and unspecified responses</li>
+<li><strong>Province of birth</strong> (<code>P07_PROV_POB</code>), indicating the respondent’s province of birth. Categories include the nine South African provinces, as well as outside South Africa, and do not know.</li>
+<li><strong>Usual residence province</strong> (<code>P10A_USUALRESPROV</code>), capturing the respondent’s province of usual residence.</li>
 <li><strong>Geographic type</strong> (<code>P_GEOTYPE</code>), identifying whether the respondent resides in an urban or rural area</li>
 </ul>
-<p>For the 2001 Census, comparable variables were identified to maximize consistency across survey years. These included sex (<code>p03_sex</code>), race (<code>p06_race</code>), education (<code>p17_educ</code>), employment status (<code>der10_em</code>), and income (<code>p22_incm</code>). Additional demographic and geographic variables were retained, including year of birth (<code>p02_yr</code>), age (<code>p02_age</code>), province of birth (<code>p09a_prv</code>), usual residence province (<code>p11c_pru</code>), and geographic classification (<code>EATYPE96</code>), which provides an urban/rural classification comparable to the 2011 geographic type variable.</p>
+<p>For the 2001 Census, comparable variables were identified to maximize consistency across survey years. These included sex (<code>p03_sex</code>), race (<code>p06_race</code>), education (<code>p17_educ</code>), employment status (<code>der10_em</code>), and income (<code>p22_incm</code>). Additional demographic and geographic variables were retained, including year of birth (<code>p02_yr</code>), age (<code>p02_age</code>), province of birth (<code>p09a_prv</code>), usual residence (<code>p11c_pru</code>), and geographic classification (<code>EATYPE96</code>), which provides an urban/rural classification comparable to the 2011 geographic type variable.</p>
 <p>The variable definitions were obtained from the official DataFirst data dictionary for the South African Census person dataset.</p>
 </section>
 <section id="exploratory-analysis" class="level2" data-number="3">
@@ -247,10 +247,10 @@ window.Quarto = {
 <div id="fig-2001-table" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/formatted_table_2001.png" class="lightbox" data-gallery="fig-summary" title="Figure&nbsp;1&nbsp;(a): 2001 summary table"><img src="images/formatted_table_2001.png" class="img-fluid figure-img" data-ref-parent="fig-summary"></a>
+<a href="images/formatted_table_2001.png" class="lightbox" data-gallery="fig-summary" title="Figure&nbsp;1&nbsp;(a): 2001 Summary Table"><img src="images/formatted_table_2001.png" class="img-fluid figure-img" data-ref-parent="fig-summary"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) 2001 summary table
+(a) 2001 Summary Table
 </figcaption>
 </figure>
 </div>
@@ -259,10 +259,10 @@ window.Quarto = {
 <div id="fig-2001-table" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/formatted_table_2011.png" class="lightbox" data-gallery="fig-summary" title="Figure&nbsp;1&nbsp;(b): 2011 summary table"><img src="images/formatted_table_2011.png" class="img-fluid figure-img" data-ref-parent="fig-summary"></a>
+<a href="images/formatted_table_2011.png" class="lightbox" data-gallery="fig-summary" title="Figure&nbsp;1&nbsp;(b): 2011 Summary Table"><img src="images/formatted_table_2011.png" class="img-fluid figure-img" data-ref-parent="fig-summary"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-2001-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) 2011 summary table
+(b) 2011 Summary Table
 </figcaption>
 </figure>
 </div>
@@ -314,16 +314,15 @@ Figure&nbsp;2: 2001 &amp; 2011 Income Density Plots
 </section>
 <section id="models" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="models"><span class="header-section-number">4</span> Models</h2>
-<p>The original study that this project builds on relied on fuzzy Regression Discontinuity (RD)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> designed to exploit localized exogenous<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> variation. While fuzzy RD designs offer strong local internal validity, the primary drawback is in external validity: treatment effect estimates are localized strictly around the discontinuity threshold, limiting generalizability across broader populations.</p>
-<p>Additionally, standard Ordinary Least Squares (OLS) specifications capture strong predictive associations but fail to account for omitted variable bias<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p>The original study that this project builds on relied on fuzzy Regression Discontinuity<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> designed to exploit localized exogenous<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> variation. While fuzzy RD designs offer strong local internal validity, the primary drawback is in external validity: treatment effect estimates are localized strictly around the discontinuity threshold, limiting generalizability across broader populations. Additionally, standard Ordinary Least Squares (OLS) specifications capture strong predictive associations but fail to account for omitted variable bias<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <p>To address these shortcomings, this analysis proceeds in stages. I first establish baseline cross-sectional OLS estimates stratified by gender using the 2011 sample. I then progress toward a more robust pooled cross-sectional design combining the 2001 and 2011 datasets. By pooling repeated cross-sections, I evaluate how racial wage premiums evolved over a decade of institutional change, while explicitly controlling for non-linear lifecycle cohort trajectories that typically confound single-year cross-sectional estimates. I conclude with Propensity Score Matching (PSM) to compare like-individuals. By matching White and Coloured individuals with similar education, ages, and locations, extreme outliers are discarded to provide a cleaner outlook on the current status of the racial wage gap.</p>
 <section id="ordinary-least-squares-on-2011-alone" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="ordinary-least-squares-on-2011-alone"><span class="header-section-number">4.1</span> Ordinary Least Squares on 2011 Alone</h3>
-<p>To establish a baseline relationship, I estimate an Ordinary Least Squares (OLS) regression separately for men and women using the 2011 sample. The dependent variable is <code>log income</code>. To account for non-linear lifecycle earnings dynamics while mitigating multicollinearity between age terms, year of birth is centered around the sample mean. The baseline specification is defined as:</p>
+<p>To establish a baseline relationship, I estimate an Ordinary Least Squares (OLS) regression separately for men and women using the 2011 sample. To account for non-linear lifecycle earnings dynamics while mitigating multicollinearity between age terms, year of birth is centered around the sample mean. The baseline specification is defined as:</p>
 <p><span class="math display">\[
 \text{Log Income}_i = \beta_0 + \beta_1 \text{White}_i + \beta_2 \text{EduYears}_i + \beta_3 \text{Age}_i + \beta_4 \text{Age}_i^2 + \beta_5 \text{Employed}_i + \varepsilon_i
 \]</span></p>
-<p>Because log income distributions frequently exhibit heteroskedastic error<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> structures across demographics, all specifications employ heteroskedasticity-consistent standard errors to ensure reliable hypothesis testing.</p>
+<p>Because log income distributions frequently exhibit heteroskedastic error<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> structures across demographics, all specifications employ heteroskedasticity-consistent standard errors to ensure reliable hypothesis testing.</p>
 <p>Figure 3 summarizes the 2011 OLS estimates stratified by gender. Across both specifications, all covariates are statistically significant at <span class="math inline">\(p &lt; 0.05\)</span>. The baseline controls account for <span class="math inline">\(43.7\%\)</span> of the variance in log income for women (<span class="math inline">\(R^2 = 0.437, N = 110,480\)</span>) and <span class="math inline">\(49.4\%\)</span> of the variance for men (<span class="math inline">\(R^2 = 0.494, N = 111,172\)</span>).</p>
 <div id="fig-2011-OLS" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -341,7 +340,7 @@ Figure&nbsp;3: 2011 OLS results
 </section>
 <section id="ols-on-pooled-data" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="ols-on-pooled-data"><span class="header-section-number">4.2</span> OLS on Pooled Data</h3>
-<p>To address potential identification threats inherent in a single cross-section, the OLS model was expanded by pooling data from the 2001 and 2011 census. An a priori threat to causal inference in single-year cross-sectional models is that individual income exhibits a pronounced non-linear lifecycle trajectory. In a single cross-section, birth cohort (<span class="math inline">\(\text{YOB}\)</span>) and current age are perfectly collinear, making it difficult to disentangle true shifts from standard career trajectory.</p>
+<p>To address potential identification threats inherent in a single cross-section, the OLS model was expanded by pooling data from the 2001 and 2011 census. An a priori threat to causal inference in single-year cross-sectional models is that individual income exhibits a pronounced non-linear lifecycle trajectory. In a single cross-section, year of birth (<span class="math inline">\(\text{YOB}\)</span>) and current age are perfectly collinear, making it difficult to disentangle true shifts from standard career trajectory.</p>
 <p>By introducing a second observation point a decade prior, individuals of similar ages at different points in time are observed and specific birth cohorts across different career stages are tracked. This temporal variance better identifies and controls for non-linear lifecycle patterns while evaluating structural shifts in the racial wage gap over time. The specification is defined as:</p>
 <p><span class="math display">\[
 \text{Log Income}_{it} = \beta_0 + \beta_1 \text{White}_{it} + \beta_2 \text{IsYear2011}_t + \beta_3 (\text{White}_{it} \times \text{IsYear2011}_t) + {\gamma} \mathbf{X}_{it} + \varepsilon_{it}
@@ -358,7 +357,7 @@ Figure&nbsp;4: 2001 &amp; 2011 Pooled OLS results
 </figcaption>
 </figure>
 </div>
-<p>In the pooled model, the quadratic cohort term (<span class="math inline">\({YOB}^2\)</span>) is negative and highly significant (<span class="math inline">\(\hat{\beta} = -0.000, p &lt; 0.01\)</span>), confirming an inverted-U lifecycle earnings profile across birth cohorts once broader macro-level temporal shifts are held constant.</p>
+<p>In the pooled model, the quadratic cohort term (<span class="math inline">\({YOB}^2\)</span>) is negative and highly significant (<span class="math inline">\(\hat{\beta} = -0.000, p &lt; 0.01\)</span>), confirming an inverted-U lifecycle earnings profile across birth cohorts.</p>
 <p>Active employment yields substantial log-income gains across both specifications (<span class="math inline">\(\hat{\beta} = 0.763\)</span> for men; <span class="math inline">\(\hat{\beta} = 0.705\)</span> for women, representing a <span class="math inline">\(100\%–115\%\)</span> wage premium over non-working or zero-income baselines). Furthermore, returns to formal education in the pooled model are consistently high across both genders, yielding an estimated <span class="math inline">\(13\%\)</span> increase in log earnings per year of schooling for men (<span class="math inline">\(\hat{\beta} = 0.129\)</span>) and <span class="math inline">\(12\%\)</span> for women (<span class="math inline">\(\hat{\beta} = 0.116\)</span>).</p>
 </section>
 <section id="propensity-score-matching" class="level3" data-number="4.3">
@@ -367,7 +366,7 @@ Figure&nbsp;4: 2001 &amp; 2011 Pooled OLS results
 <p><span class="math display">\[
 e(X_i) = P(D_i = 1 \mid X_i)
 \]</span></p>
-<p>In this context, the treatment variable <span class="math inline">\(D_i\)</span> indicates racial classification, where <span class="math inline">\(D_i = 1\)</span> denotes White individuals and <span class="math inline">\(D_i = 0\)</span> denotes Coloured. The vector <span class="math inline">\(X_i\)</span> contains birth cohort (age), education, province of birth, urban residence, and employment status, variables that dictate selection into treatment status.</p>
+<p>In this context, the treatment variable <span class="math inline">\(D_i\)</span> indicates racial classification, where <span class="math inline">\(D_i = 1\)</span> denotes White individuals and <span class="math inline">\(D_i = 0\)</span> denotes Coloured. The vector <span class="math inline">\(X_i\)</span> contains year of birth, education, province of birth, urban residence, and employment status, variables that dictate selection into treatment status.</p>
 <p>Matching constructs a counterfactual control group by pairing each treated observation with control observations exhibiting similar predicted propensity scores. Under the assumption of conditional independence, this procedure eliminates selection bias on observable characteristics.</p>
 <p>The propensity scores are estimated separately by gender using logistic regression:</p>
 <p><span class="math display">\[
@@ -428,7 +427,7 @@ Figure&nbsp;6: Propensity Score Matching OLS results
 </figcaption>
 </figure>
 </div>
-<p>Holding education, age, geography, and employment status constant on matched support, White men earned a baseline premium of <span class="math inline">\(0.628\)</span> log points (<span class="math inline">\(\approx 87\%\)</span>) over Coloured men in 2001. White women earned a smaller baseline premium of <span class="math inline">\(0.399\)</span> log points (<span class="math inline">\(\approx 49\%\)</span>). For men, the interaction term is negative and statistically significant (<span class="math inline">\(\beta_3 = -0.110, p &lt; 0.01\)</span>). This indicates that the racial wage gap among demographically matched male peers narrowed by approximately 11 percentage points over the decade. For women, the interaction coefficient is statistically indistinguishable from zero (<span class="math inline">\(\beta_3 = -0.003, p = 0.882\)</span>). Controlling for human capital selection via PSM reveals that the conditional racial wage gap among comparable women remained stagnant over the period. Years of education yield strong positive returns across both groups, with men experiencing slightly higher wage returns per year of education (<span class="math inline">\(16.3\%\)</span>) relative to women (<span class="math inline">\(13.4\%\)</span>).</p>
+<p>Holding education, age, geography, and employment status constant on matched support, White men earned a baseline premium of <span class="math inline">\(0.628\)</span> log points (<span class="math inline">\(e^{0.638} = 87\%\)</span>) over Coloured men in 2001. White women earned a smaller baseline premium of <span class="math inline">\(0.399\)</span> log points (<span class="math inline">\(e^{0.399} = 49\%\)</span>). For men, the interaction term is negative and statistically significant (<span class="math inline">\(\beta_3 = -0.110, p &lt; 0.01\)</span>). This indicates that the racial wage gap among demographically matched male peers narrowed by <span class="math inline">\(10.4\%\)</span> over the decade. For women, the interaction coefficient is statistically indistinguishable from zero (<span class="math inline">\(\beta_3 = -0.003, p = 0.882\)</span>). The conditional racial wage gap among comparable women remained stagnant over the period. Years of education yield strong positive returns across both groups, with men experiencing slightly higher wage returns per year of education (<span class="math inline">\(16.3\%\)</span>) relative to women (<span class="math inline">\(13.4\%\)</span>).</p>
 </section>
 </section>
 <section id="evaluation" class="level2" data-number="5">
@@ -436,10 +435,10 @@ Figure&nbsp;6: Propensity Score Matching OLS results
 <p>In the final matched OLS model, each additional year of education carries a consistent, high return, boosting real log income by <span class="math inline">\(16.3\%\)</span> for men and <span class="math inline">\(13.4\%\)</span> for women. Similarly, employment status represents the single largest earnings jump in the model (increasing log income by <span class="math inline">\(0.87\)</span>–<span class="math inline">\(0.93\)</span>).</p>
 <p>Pooling the 2001 and 2011 waves reveals a clear split in how the racial wage gap changed over time once demographically matched peers are compared:</p>
 <ul>
-<li><p>Men: The coefficient on White × Year 2011 is <span class="math inline">\(-0.110\)</span> (<span class="math inline">\(p &lt; 0.01\)</span>). This indicates that among demographically comparable men, the conditional racial wage gap narrowed by roughly 11 percentage points over the decade.</p></li>
+<li><p>Men: The coefficient on White × Year 2011 is <span class="math inline">\(-0.110\)</span> (<span class="math inline">\(p &lt; 0.01\)</span>). This indicates that among demographically comparable men, the conditional racial wage gap narrowed by <span class="math inline">\(10.4\%\)</span> over the decade.</p></li>
 <li><p>Women: The interaction coefficient is <span class="math inline">\(-0.003\)</span> (<span class="math inline">\(p = 0.882\)</span>), which is statistically indistinguishable from zero. Even after matching on education and location, the female racial wage gap remained stagnant between 2001 and 2011.</p></li>
 </ul>
-<p>Complementing these regression coefficients, the Empirical Cumulative Distribution Function (ECDF) plot below confirms first-order stochastic dominance. Across both 2001 and 2011, the real income distribution for White workers sits strictly to the right of non-White workers across virtually every quantile. This proves that the racial premium estimated in our OLS regressions is driven by broad, systemic income differences across the whole economy, rather than being skewed by a few ultra-high earners at the top.</p>
+<p>Complementing these regression coefficients, the Empirical Cumulative Distribution Function (ECDF) plot below confirms first-order stochastic dominance<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Across both 2001 and 2011, the real income distribution for White workers sits strictly to the right of non-White workers across virtually every quantile. This proves that the racial premium estimated in our OLS regressions is driven by broad, systemic income differences across the whole economy, rather than being skewed by a few ultra-high earners at the top.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/ecdf_faceted.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="ECDF Faceted Plot"><img src="images/ecdf_faceted.png" class="img-fluid figure-img" alt="ECDF Faceted Plot"></a></p>
@@ -450,16 +449,11 @@ Figure&nbsp;6: Propensity Score Matching OLS results
 <section id="conclusion" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6</span> Conclusion</h2>
 <p>This paper evaluated post-Apartheid racial income disparities in South Africa by tracking a cohort of workers across the 2001 and 2011 Census waves. By combining repeated cross-sections with a doubly robust Propensity Score Matching (PSM) and fixed-effects OLS regression design, the analysis isolates earnings differences among demographically comparable peers on common support.</p>
-<p>The empirical findings show that while broad structural inequality remain, conditional wage gaps shifted differently by gender over the post-Apartheid decade:</p>
-<ul>
-<li><p>Controlling for human capital, age, and regional fixed effects, the matched racial wage gap among men narrowed significantly by approximately 11 percentage points between 2001 and 2011</p></li>
-<li><p>For women, the conditional racial wage gap showed no statistically significant change, remaining fixed over the same ten-year period</p></li>
-</ul>
-<p>Ultimately, these results demonstrate that while expanding access to education and employment is vital, human capital accumulation alone has not been enough to achieve equal earnings outcomes. Persistent conditional gaps highlight the ongoing challenge of structural labor market disparities, emphasizing that policy efforts must address both human capital gaps and within-market pay equity to foster true economic convergence.</p>
+<p>Ultimately, the results demonstrate that while expanding access to education and employment is vital, human capital accumulation alone has not been enough to achieve equal earnings outcomes.</p>
 </section>
 <section id="acknowledgments" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p>Thanks to Professor Jeff Power Jacobs!</p>
+<p>Thanks to Professor Jeff Power Jacobs</p>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
@@ -489,12 +483,12 @@ Statistics South Africa. 2011. <span>“<a href="https://doi.org/10.25828/bp70-m
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>literally<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation; the Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>According to FRDD, the outcome variable undergoes a sharp discontinuity at the threshold, but the assignment to a treatment or control group is not perfectly determined by this discontinuity; using a fuzzy score that reflects the degree of uncertainty associated with group assignment, it is possible to quantify the degree of noise in group assignment<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>An exogenous variable is an explanatory variable that is not correlated with the error term<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>For an omitted variable to bias the results, it must correlate with the dependent variable and at least one independent variable, making it a confounding variable<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Censuses are principal means of collecting basic population and housing statistics required for social and economic development, policy interventions, their implementation and evaluation; the Post-Apartheid South African government has conducted three Censuses, in 1996, 2001 and 2011<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>According to FRDD, the outcome variable undergoes a sharp discontinuity at the threshold, but the assignment to a treatment or control group is not perfectly determined by this discontinuity; using a fuzzy score that reflects the degree of uncertainty associated with group assignment, it is possible to quantify the degree of noise in group assignment<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>An exogenous variable is an explanatory variable that is not correlated with the error term<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>For an omitted variable to bias the results, it must correlate with the dependent variable and at least one independent variable, making it a confounding variable<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Heteroskedasticity occurs when the variance of the error terms is not constant across all levels of the independent variable(s)<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Random variable A has first-order stochastic dominance over random variable B if for any outcome x, A gives at least as high a probability of receiving at least x as does B, and for some x, A gives a higher probability of receiving at least x<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
